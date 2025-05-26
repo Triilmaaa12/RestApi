@@ -1,0 +1,34 @@
+[
+{
+    "nama": "tri ilma ramadani",
+    "umur":21,
+    "nim": "2217020146",
+    "lulus": false,
+    "hobby": [
+        "traveling",
+        "membaca"
+
+    ],
+    "pembimbing" : {
+        "pembimbing1": "raju wandira",
+        "pembimbing2": "haditya prasetyo"
+    }
+
+},
+{
+    "nama": "ilma",
+    "umur":21,
+    "nim": "2217020146",
+    "lulus": false,
+    "hobby": [
+        "menulis",
+        "belajar"
+
+    ],
+    "pembimbing" : {
+        "pembimbing1": "raju wandira",
+        "pembimbing2": "haditya prasetyo"
+    }
+
+}
+]
