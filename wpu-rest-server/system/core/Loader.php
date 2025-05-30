@@ -59,6 +59,21 @@ class CI_Loader {
 	 */
 	protected $_ci_ob_level;
 
+	public $load;
+	public $benchmark;
+	public $hooks;
+	public $config;
+	public $log;
+	public $utf8;
+	public $uri;
+	public $table;
+	public $router;
+	public $output;
+	public $security;
+	public $input;
+	public $db;
+	public $lang;
+
 	/**
 	 * List of paths to load views from
 	 *
@@ -148,7 +163,7 @@ class CI_Loader {
 	 * Initializer
 	 *
 	 * @todo	Figure out a way to move this to the constructor
-	 *		without breaking *package_path*() methods.
+	 *		without breaking package_path() methods.
 	 * @uses	CI_Loader::_ci_autoloader()
 	 * @used-by	CI_Controller::__construct()
 	 * @return	void
@@ -750,7 +765,7 @@ class CI_Loader {
 			require BASEPATH.'libraries/Driver.php';
 		}
 
-		// We can save the loader some time since Drivers will *always* be in a subfolder,
+		// We can save the loader some time since Drivers will always be in a subfolder,
 		// and typically identically named to the library
 		if ( ! strpos($library, '/'))
 		{
@@ -872,7 +887,7 @@ class CI_Loader {
 	 *
 	 * Used to load views and files.
 	 *
-	 * Variables are prefixed with _ci_ to avoid symbol collision with
+	 * Variables are prefixed with ci to avoid symbol collision with
 	 * variables made available to view files.
 	 *
 	 * @used-by	CI_Loader::view()
@@ -962,7 +977,7 @@ class CI_Loader {
 		// to standard PHP echo statements.
 		if ( ! is_php('5.4') && ! ini_get('short_open_tag') && config_item('rewrite_short_tags') === TRUE)
 		{
-			echo eval('?>'.preg_replace('/;*\s*\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+			echo eval('?>'.preg_replace('/;\s\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
 		}
 		else
 		{
@@ -1373,7 +1388,7 @@ class CI_Loader {
 	 * Prepare variables for _ci_vars, to be later extract()-ed inside views
 	 *
 	 * Converts objects to associative arrays and filters-out internal
-	 * variable names (i.e. keys prefixed with '_ci_').
+	 * variable names (i.e. keys prefixed with 'ci').
 	 *
 	 * @param	mixed	$vars
 	 * @return	array
@@ -1389,7 +1404,7 @@ class CI_Loader {
 
 		foreach (array_keys($vars) as $key)
 		{
-			if (strncmp($key, '_ci_', 4) === 0)
+			if (strncmp($key, 'ci', 4) === 0)
 			{
 				unset($vars[$key]);
 			}

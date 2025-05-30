@@ -300,6 +300,7 @@ abstract class CI_DB_driver {
 	 * @var	object
 	 */
 	public $CACHE;
+	public $failover;
 
 	/**
 	 * Protect identifiers flag

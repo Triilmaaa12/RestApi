@@ -140,7 +140,7 @@ class CI_URI {
 
 		log_message('info', 'URI Class Initialized');
 	}
-
+	public $config;
 	// --------------------------------------------------------------------
 
 	/**

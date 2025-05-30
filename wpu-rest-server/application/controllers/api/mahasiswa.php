@@ -7,15 +7,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 
-class mahasiswa extends REST_Controller 
-{
+class mahasiswa extends REST_Controller {
 
-    public function __construct() 
-    {
+    public $mahasiswa;
+
+    public function __construct() {
         parent::__construct();
         $this->load->model('Mahasiswa_model', 'mahasiswa');
 
-         $this->methods['index_get']['limit'] = 100;
+        $this->methods['index_get']['limit'] = 100;
 
     }
 
